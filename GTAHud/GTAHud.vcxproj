@@ -30,14 +30,14 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -72,9 +72,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.asi</TargetExt>
+    <IncludePath>$(RWSDK);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.asi</TargetExt>
+    <IncludePath>$(RWSDK);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -86,9 +90,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;GTAHUD_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;GTAHUD_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -103,9 +107,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;GTAHUD_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;GTAHUD_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -151,17 +155,102 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ColorSchemes.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GTAHud.h" />
+    <ClInclude Include="IniReader.h" />
+    <ClInclude Include="manhunt\AI.h" />
+    <ClInclude Include="manhunt\AmmoWeapon.h" />
+    <ClInclude Include="manhunt\Anim.h" />
+    <ClInclude Include="manhunt\App.h" />
+    <ClInclude Include="manhunt\Camera.h" />
+    <ClInclude Include="manhunt\Character.h" />
+    <ClInclude Include="manhunt\Cheats.h" />
+    <ClInclude Include="manhunt\Clump.h" />
+    <ClInclude Include="manhunt\ClumpDict.h" />
+    <ClInclude Include="manhunt\Collectable.h" />
+    <ClInclude Include="manhunt\core.h" />
+    <ClInclude Include="manhunt\CreationManager.h" />
+    <ClInclude Include="manhunt\DevMenu.h" />
+    <ClInclude Include="manhunt\Entity.h" />
+    <ClInclude Include="manhunt\EntityManager.h" />
+    <ClInclude Include="manhunt\Filenames.h" />
+    <ClInclude Include="manhunt\Frontend.h" />
+    <ClInclude Include="manhunt\Graph.h" />
+    <ClInclude Include="manhunt\Hunter.h" />
+    <ClInclude Include="manhunt\Input.h" />
+    <ClInclude Include="manhunt\Inventory.h" />
+    <ClInclude Include="manhunt\MaterialManager.h" />
+    <ClInclude Include="manhunt\MemoryHeap.h" />
+    <ClInclude Include="manhunt\Misc.h" />
+    <ClInclude Include="manhunt\MusicManager.h" />
+    <ClInclude Include="manhunt\Ped.h" />
+    <ClInclude Include="manhunt\PedHead.h" />
+    <ClInclude Include="manhunt\Player.h" />
+    <ClInclude Include="manhunt\PtrList.h" />
+    <ClInclude Include="manhunt\Renderer.h" />
+    <ClInclude Include="manhunt\SampleIDs.h" />
+    <ClInclude Include="manhunt\Scene.h" />
+    <ClInclude Include="manhunt\Script.h" />
+    <ClInclude Include="manhunt\Shot.h" />
+    <ClInclude Include="manhunt\SpecialFX.h" />
+    <ClInclude Include="manhunt\String.h" />
+    <ClInclude Include="manhunt\Text.h" />
+    <ClInclude Include="manhunt\Throwable.h" />
+    <ClInclude Include="manhunt\Time.h" />
+    <ClInclude Include="manhunt\TypeData.h" />
+    <ClInclude Include="manhunt\Vector.h" />
+    <ClInclude Include="manhunt\Weapon.h" />
+    <ClInclude Include="manhunt\Weather.h" />
+    <ClInclude Include="MemoryMgr.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="RenderWare.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="GTAHud.cpp" />
+    <ClCompile Include="IniReader.cpp" />
+    <ClCompile Include="manhunt\AI.cpp" />
+    <ClCompile Include="manhunt\AmmoWeapon.cpp" />
+    <ClCompile Include="manhunt\Anim.cpp" />
+    <ClCompile Include="manhunt\App.cpp" />
+    <ClCompile Include="manhunt\Camera.cpp" />
+    <ClCompile Include="manhunt\Character.cpp" />
+    <ClCompile Include="manhunt\Cheats.cpp" />
+    <ClCompile Include="manhunt\ClumpDict.cpp" />
+    <ClCompile Include="manhunt\Collectable.cpp" />
+    <ClCompile Include="manhunt\CreationManager.cpp" />
+    <ClCompile Include="manhunt\Entity.cpp" />
+    <ClCompile Include="manhunt\EntityManager.cpp" />
+    <ClCompile Include="manhunt\Filenames.cpp" />
+    <ClCompile Include="manhunt\Frontend.cpp" />
+    <ClCompile Include="manhunt\Graph.cpp" />
+    <ClCompile Include="manhunt\Hunter.cpp" />
+    <ClCompile Include="manhunt\Input.cpp" />
+    <ClCompile Include="manhunt\Inventory.cpp" />
+    <ClCompile Include="manhunt\MemoryHeap.cpp" />
+    <ClCompile Include="manhunt\Misc.cpp" />
+    <ClCompile Include="manhunt\MusicManager.cpp" />
+    <ClCompile Include="manhunt\Ped.cpp" />
+    <ClCompile Include="manhunt\Player.cpp" />
+    <ClCompile Include="manhunt\Renderer.cpp" />
+    <ClCompile Include="manhunt\Scene.cpp" />
+    <ClCompile Include="manhunt\Script.cpp" />
+    <ClCompile Include="manhunt\Shot.cpp" />
+    <ClCompile Include="manhunt\SpecialFX.cpp" />
+    <ClCompile Include="manhunt\String.cpp" />
+    <ClCompile Include="manhunt\Text.cpp" />
+    <ClCompile Include="manhunt\Throwable.cpp" />
+    <ClCompile Include="manhunt\Time.cpp" />
+    <ClCompile Include="manhunt\Weapon.cpp" />
+    <ClCompile Include="manhunt\Weather.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="RenderWare.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
