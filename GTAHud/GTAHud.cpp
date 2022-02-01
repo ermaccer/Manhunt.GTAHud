@@ -217,8 +217,11 @@ void GTAHud::Draw()
 				vcOffset = 0.055f;
 
 			sprintf(buff, "%d-%d", m_totalAmmo, m_curAmmo);
-			CFrontend::SetDrawRGBA(0, 0, 0, settings.HudAlpha);
-			CFrontend::Print8(buff, startingPos + 0.002 + settings.HudOffsetX, 0.160f + settings.HudOffsetY + vcOffset, 0.65f, 0.65f, 0.0, FONT_TYPE_DEFAULT);
+			if (!(scheme.AmmoColor.R == 0 && scheme.AmmoColor.G == 0 && scheme.AmmoColor.B == 0))
+			{
+				CFrontend::SetDrawRGBA(0, 0, 0, settings.HudAlpha);
+				CFrontend::Print8(buff, startingPos + 0.002 + settings.HudOffsetX, 0.160f + settings.HudOffsetY + vcOffset, 0.65f, 0.65f, 0.0, FONT_TYPE_DEFAULT);
+			}
 			CFrontend::SetDrawRGBA(scheme.AmmoColor.R, scheme.AmmoColor.G, scheme.AmmoColor.B, settings.HudAlpha);
 			CFrontend::Print8(buff, startingPos + settings.HudOffsetX, 0.155 + settings.HudOffsetY + vcOffset, 0.65f, 0.65f, 0.0, FONT_TYPE_DEFAULT);
 		}
